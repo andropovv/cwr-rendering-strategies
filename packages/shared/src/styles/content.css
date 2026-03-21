@@ -1,0 +1,230 @@
+.cwr-blog-card {
+  padding: 1.5rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.cwr-blog-card-title {
+  font-size: 1.25rem;
+  margin: 0 0 0.5rem;
+}
+
+.cwr-blog-card-title a {
+  color: #1e293b;
+  text-decoration: none;
+}
+
+.cwr-blog-card-title a:hover {
+  text-decoration: underline;
+}
+
+.cwr-blog-card-excerpt {
+  color: #64748b;
+  margin: 0 0 0.75rem;
+  font-size: 0.9375rem;
+}
+
+.cwr-blog-card-meta {
+  font-size: 0.8125rem;
+  color: #94a3b8;
+}
+
+.cwr-blog-post-title {
+  font-size: 1.75rem;
+  margin: 0 0 0.5rem;
+}
+
+.cwr-blog-post-meta {
+  font-size: 0.875rem;
+  color: #64748b;
+  margin-bottom: 1.5rem;
+}
+
+.cwr-blog-post-body {
+  line-height: 1.7;
+  color: #334155;
+}
+
+.cwr-product-card,
+.cwr-product-page {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.cwr-product-card-image,
+.cwr-product-page-image {
+  height: 160px;
+  background: #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8;
+  font-size: 0.875rem;
+}
+
+.cwr-product-page .cwr-product-page-image {
+  height: 280px;
+}
+
+.cwr-product-card-name,
+.cwr-product-page-title {
+  font-size: 1.25rem;
+  margin: 1rem 1rem 0;
+}
+
+.cwr-product-page-title {
+  font-size: 1.5rem;
+}
+
+.cwr-product-card-desc,
+.cwr-product-page-desc {
+  color: #64748b;
+  font-size: 0.9375rem;
+  margin: 0.5rem 1rem;
+}
+
+.cwr-product-page-desc {
+  margin-bottom: 1rem;
+}
+
+.cwr-product-card-price,
+.cwr-product-page-price {
+  font-weight: 700;
+  font-size: 1.125rem;
+  margin: 0 1rem 0.5rem;
+}
+
+.cwr-product-card-rating,
+.cwr-product-page-rating {
+  font-size: 0.875rem;
+  color: #64748b;
+  margin: 0 1rem 1rem;
+}
+
+.cwr-product-page-info {
+  padding: 0 1.5rem 1.5rem;
+}
+
+.cwr-stats-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1.25rem;
+}
+
+.cwr-stats-card-title {
+  font-size: 0.8125rem;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.cwr-stats-card-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 0.25rem;
+}
+
+.cwr-stats-card-subtitle {
+  font-size: 0.8125rem;
+  color: #94a3b8;
+  margin-top: 0.25rem;
+}
+
+.cwr-chart-bar {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1.25rem;
+}
+
+.cwr-chart-title {
+  font-size: 1rem;
+  margin: 0 0 1rem;
+}
+
+.cwr-chart-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+  height: 160px;
+}
+
+.cwr-chart-bar-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.cwr-chart-bar-fill {
+  width: 100%;
+  max-width: 32px;
+  background: #3b82f6;
+  border-radius: 4px 4px 0 0;
+  min-height: 4px;
+}
+
+.cwr-chart-bar-label {
+  font-size: 0.75rem;
+  color: #64748b;
+}
+
+.cwr-chart-bar-value {
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.cwr-activity-list {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1.25rem;
+}
+
+.cwr-activity-title {
+  font-size: 1rem;
+  margin: 0 0 1rem;
+}
+
+.cwr-activity-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cwr-activity-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #f1f5f9;
+  font-size: 0.875rem;
+}
+
+.cwr-activity-item:last-child {
+  border-bottom: none;
+}
+
+.cwr-activity-time {
+  color: #94a3b8;
+}
+
+.cwr-dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.cwr-dashboard-content {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .cwr-dashboard-content {
+    grid-template-columns: 1fr;
+  }
+}

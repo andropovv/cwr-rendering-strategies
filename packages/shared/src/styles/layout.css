@@ -1,0 +1,60 @@
+.cwr-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.cwr-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1rem 2rem;
+  background: #1a1a2e;
+  color: #eee;
+}
+
+.cwr-logo {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: inherit;
+  text-decoration: none;
+}
+
+.cwr-nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.cwr-nav a {
+  color: #aaa;
+  text-decoration: none;
+}
+
+.cwr-nav a:hover {
+  color: #fff;
+}
+
+.cwr-strategy-badge {
+  margin-left: auto;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  background: #16213e;
+  border-radius: 4px;
+  color: #94a3b8;
+}
+
+.cwr-main {
+  flex: 1;
+  padding: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.cwr-footer {
+  padding: 1rem 2rem;
+  background: #16213e;
+  color: #94a3b8;
+  font-size: 0.875rem;
+  text-align: center;
+}
