@@ -1,14 +1,20 @@
 {
   "builds": [
     {
-      "src": "apps/mock-api/dist/server.js",
-      "use": "@vercel/node"
-    }
-  ],
-  "routes": [
+      "src": "apps/islands/package.json",
+      "use": "@vercel/next"
+    },
     {
-      "src": "/(.*)",
-      "dest": "/apps/mock-api/dist/server.js"
+      "src": "apps/ssr-full/package.json",
+      "use": "@vercel/next"
+    },
+    {
+      "src": "apps/streaming/package.json",
+      "use": "@vercel/next"
+    },
+    {
+      "src": "apps/rsc-selective/package.json",
+      "use": "@vercel/next"
     }
   ]
 }
