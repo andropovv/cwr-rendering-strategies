@@ -6,7 +6,7 @@ import type {
   DashboardSortOrder,
 } from "../utils/dashboardView";
 
-export const DEFAULT_MOCK_API_BASE_URL = "http://localhost:4010";
+const API_BASE = process.env.NEXT_PUBLIC_MOCK_API_URL || 'http://localhost:4010';
 
 export interface MockApiDatasetOptions {
   baseUrl?: string;
@@ -47,7 +47,7 @@ export async function fetchRawDashboardDataset(
   options: MockApiDatasetOptions = {},
 ): Promise<DashboardDataset> {
   const {
-    baseUrl = DEFAULT_MOCK_API_BASE_URL,
+    baseUrl = API_BASE,
     points = 5000,
     activities = 5000,
     delayMs = 150,
@@ -74,7 +74,7 @@ export async function fetchDashboardViewFromApi(
   options: MockApiDatasetOptions = {},
 ): Promise<DashboardData> {
   const {
-    baseUrl = DEFAULT_MOCK_API_BASE_URL,
+    baseUrl = API_BASE,
     points = 5000,
     activities = 5000,
     delayMs = 150,
@@ -99,7 +99,7 @@ export async function fetchProductsFromApi(
   options: MockApiProductOptions = {},
 ): Promise<{ items: Product[]; total: number }> {
   const {
-    baseUrl = DEFAULT_MOCK_API_BASE_URL,
+    baseUrl = API_BASE,
     count = 1200,
     delayMs = 100,
     limit = 24,
@@ -119,7 +119,7 @@ export async function fetchProductFromApi(
   options: MockApiProductOptions = {},
 ): Promise<Product> {
   const {
-    baseUrl = DEFAULT_MOCK_API_BASE_URL,
+    baseUrl = API_BASE,
     count = 1200,
     delayMs = 100,
   } = options;
