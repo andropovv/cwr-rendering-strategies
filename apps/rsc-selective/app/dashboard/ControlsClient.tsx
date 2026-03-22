@@ -1,51 +1,56 @@
 "use client";
 
-import { useRouter, useSearchParams } from "next/navigation";
-import { useTransition } from "react";
+import { useState, useTransition } from "react";
 import type {
   DashboardMetric,
   DashboardRange,
   DashboardSortOrder,
-} from "@cwr/shared";
+} from "@cwr/shared/client";
+import { updateDashboardFiltersAction } from "./actions";
 
-function pick<T extends string>(value: string | null, allowed: readonly T[], fallback: T): T {
-  if (!value) return fallback;
-  return (allowed as readonly string[]).includes(value) ? (value as T) : fallback;
-}
+const pillStyle = (active: boolean) =>
+  ({
+    padding: "0.25rem 0.75rem",
+    borderRadius: "999px",
+    border: "1px solid #e2e8f0",
+    background: active ? "#0f172a" : "white",
+    color: active ? "white" : "#0f172a",
+    cursor: "pointer",
+    fontSize: "0.8125rem",
+  }) as const;
 
-export function ControlsClient() {
-  const router = useRouter();
-  const sp = useSearchParams();
+export function ControlsClient({
+  initialRange,
+  initialMetric,
+  initialSortOrder,
+}: {
+  initialRange: DashboardRange;
+  initialMetric: DashboardMetric;
+  initialSortOrder: DashboardSortOrder;
+}) {
   const [isPending, startTransition] = useTransition();
+  const [range, setRange] = useState(initialRange);
+  const [metric, setMetric] = useState(initialMetric);
+  const [sortOrder, setSortOrder] = useState(initialSortOrder);
 
-  const range = pick<DashboardRange>(sp.get("range"), ["7d", "30d", "90d"] as const, "7d");
-  const metric = pick<DashboardMetric>(
-    sp.get("metric"),
-    ["users", "revenue", "conversion"] as const,
-    "users",
-  );
-  const sortOrder = pick<DashboardSortOrder>(sp.get("sort"), ["newest", "oldest"] as const, "newest");
-
-  const update = (next: { range?: DashboardRange; metric?: DashboardMetric; sort?: DashboardSortOrder }) => {
-    const params = new URLSearchParams(sp.toString());
-    if (next.range) params.set("range", next.range);
-    if (next.metric) params.set("metric", next.metric);
-    if (next.sort) params.set("sort", next.sort);
-    startTransition(() => {
-      router.replace(`?${params.toString()}`);
+  const update = (next: {
+    range?: DashboardRange;
+    metric?: DashboardMetric;
+    sortOrder?: DashboardSortOrder;
+  }) => {
+    startTransition(async () => {
+      if (next.range) {
+        setRange(next.range);
+      }
+      if (next.metric) {
+        setMetric(next.metric);
+      }
+      if (next.sortOrder) {
+        setSortOrder(next.sortOrder);
+      }
+      await updateDashboardFiltersAction(next);
     });
   };
-
-  const pillStyle = (active: boolean) =>
-    ({
-      padding: "0.25rem 0.75rem",
-      borderRadius: "999px",
-      border: "1px solid #e2e8f0",
-      background: active ? "#0f172a" : "white",
-      color: active ? "white" : "#0f172a",
-      cursor: "pointer",
-      fontSize: "0.8125rem",
-    }) as const;
 
   return (
     <div
@@ -84,10 +89,18 @@ export function ControlsClient() {
       </button>
 
       <span style={{ marginLeft: "1rem", fontSize: "0.875rem", color: "#64748b" }}>Активность:</span>
-      <button type="button" onClick={() => update({ sort: "newest" })} style={pillStyle(sortOrder === "newest")}>
+      <button
+        type="button"
+        onClick={() => update({ sortOrder: "newest" })}
+        style={pillStyle(sortOrder === "newest")}
+      >
         Сначала новые
       </button>
-      <button type="button" onClick={() => update({ sort: "oldest" })} style={pillStyle(sortOrder === "oldest")}>
+      <button
+        type="button"
+        onClick={() => update({ sortOrder: "oldest" })}
+        style={pillStyle(sortOrder === "oldest")}
+      >
         Сначала старые
       </button>
 

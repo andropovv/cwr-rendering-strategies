@@ -12,8 +12,8 @@ export function ChartBar({ data, max: maxProp }: ChartBarProps) {
     <div className="cwr-chart-bar">
       <h3 className="cwr-chart-title">Активность по дням</h3>
       <div className="cwr-chart-bars">
-        {data.map((item) => (
-          <div key={item.label} className="cwr-chart-bar-item">
+        {data.map((item, index) => (
+          <div key={`${item.label}-${index}`} className="cwr-chart-bar-item">
             <div
               className="cwr-chart-bar-fill"
               style={{ height: `${(item.value / max) * 100}%` }}

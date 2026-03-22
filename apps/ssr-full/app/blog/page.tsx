@@ -1,4 +1,4 @@
-import { getBlogPosts } from "@cwr/shared";
+import { getBlogPosts } from "@cwr/shared/server";
 import { BlogListClient } from "./BlogListClient";
 
 export default async function BlogPage() {

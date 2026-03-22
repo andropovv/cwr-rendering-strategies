@@ -1,12 +1,12 @@
 "use client";
 
 import { useState, useTransition } from "react";
+import type { DashboardDataset } from "../data/dashboard";
 import {
-  StatsCard,
-} from "../components/StatsCard";
-import { ChartBar } from "../components/ChartBar";
-import { ActivityList } from "../components/ActivityList";
-import type { DashboardData } from "../data/dashboard";
+  ClientActivityList,
+  ClientChartBar,
+  ClientStatsCard,
+} from "./Presentational";
 import {
   applyDashboardView,
   type DashboardMetric,
@@ -15,12 +15,10 @@ import {
 } from "../utils/dashboardView";
 
 export interface DashboardInteractiveProps {
-  data: DashboardData;
+  dataset: DashboardDataset;
 }
 
-export function DashboardInteractive({ data }: DashboardInteractiveProps) {
-  const { stats } = data;
-
+export function DashboardInteractive({ dataset }: DashboardInteractiveProps) {
   const [range, setRange] = useState<DashboardRange>("7d");
   const [metric, setMetric] = useState<DashboardMetric>("users");
   const [sortOrder, setSortOrder] = useState<DashboardSortOrder>("newest");
@@ -47,7 +45,8 @@ export function DashboardInteractive({ data }: DashboardInteractiveProps) {
     });
   };
 
-  const view = applyDashboardView(data, { range, metric, sortOrder });
+  const view = applyDashboardView(dataset, { range, metric, sortOrder });
+  const { stats } = view;
 
   return (
     <div>
@@ -218,21 +217,21 @@ export function DashboardInteractive({ data }: DashboardInteractiveProps) {
       </div>
 
       <div className="cwr-dashboard-grid">
-        <StatsCard title="Всего пользователей" value={stats.totalUsers} />
-        <StatsCard title="Активных сегодня" value={stats.activeToday} />
-        <StatsCard
+        <ClientStatsCard title="Всего пользователей" value={stats.totalUsers} />
+        <ClientStatsCard title="Активных сегодня" value={stats.activeToday} />
+        <ClientStatsCard
           title="Конверсия"
           value={`${stats.conversionRate}%`}
         />
-        <StatsCard
+        <ClientStatsCard
           title="Выручка"
           value={`${(stats.revenue / 1000).toFixed(0)}k ₽`}
         />
       </div>
 
       <div className="cwr-dashboard-content">
-        <ChartBar data={view.chartData} />
-        <ActivityList items={view.recentActivity} />
+        <ClientChartBar data={view.chartData} />
+        <ClientActivityList items={view.recentActivity} />
       </div>
     </div>
   );

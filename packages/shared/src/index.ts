@@ -15,21 +15,47 @@ export {
 } from "./data/blog";
 export type { BlogPost } from "./data/blog";
 
-export { getProducts, getProductById, products } from "./data/products";
+export { generateProducts, getProducts, getProductById, products } from "./data/products";
 export type { Product } from "./data/products";
 
 export {
-  getDashboardStats,
-  getChartData,
-  getRecentActivity,
   getDashboardData,
+  generateLargeDashboardDataset,
+  formatRelativeActivityTime,
 } from "./data/dashboard";
-export type { DashboardData, DashboardStats, ChartDataPoint } from "./data/dashboard";
+export type {
+  DashboardData,
+  DashboardStats,
+  ChartDataPoint,
+  DashboardDataset,
+  DashboardDatasetOptions,
+  DashboardActivityItem,
+  RawDashboardPoint,
+  RawDashboardActivity,
+} from "./data/dashboard";
 
 export { DashboardInteractive } from "./client/DashboardInteractive";
 export type { DashboardInteractiveProps } from "./client/DashboardInteractive";
+export {
+  ClientActivityList,
+  ClientChartBar,
+  ClientProductCard,
+  ClientProductPageContent,
+  ClientStatsCard,
+} from "./client/Presentational";
 export { ProductControls } from "./client/ProductControls";
 export type { ProductControlsProps } from "./client/ProductControls";
+export {
+  DEFAULT_MOCK_API_BASE_URL,
+  fetchRawDashboardDataset,
+  fetchDashboardViewFromApi,
+  fetchProductsFromApi,
+  fetchProductFromApi,
+} from "./api/mockApi";
+export type {
+  MockApiDatasetOptions,
+  MockApiProductOptions,
+} from "./api/mockApi";
 
 export {
   applyDashboardView,

@@ -1,4 +1,4 @@
-import { getBlogPostBySlug, getBlogPosts } from "@cwr/shared";
+import { getBlogPostBySlug, getBlogPosts } from "@cwr/shared/server";
 import { notFound } from "next/navigation";
 import { BlogPostClient } from "../BlogPostClient";
 

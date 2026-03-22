@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Layout } from "@cwr/shared";
 import "@cwr/shared/styles/layout.css";
 import "@cwr/shared/styles/content.css";
 import "./globals.css";
@@ -17,7 +16,23 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <body>
-        <Layout strategy="SSR + полная гидратация">{children}</Layout>
+        <div className="cwr-layout">
+          <header className="cwr-header">
+            <a href="/" className="cwr-logo">
+              CWR Research
+            </a>
+            <nav className="cwr-nav">
+              <a href="/blog">Блог</a>
+              <a href="/product">Товар</a>
+              <a href="/dashboard">Дашборд</a>
+            </nav>
+            <span className="cwr-strategy-badge">SSR + полная гидратация</span>
+          </header>
+          <main className="cwr-main">{children}</main>
+          <footer className="cwr-footer">
+            <p>Исследование адаптивных стратегий рендеринга • Core Web Vitals</p>
+          </footer>
+        </div>
       </body>
     </html>
   );

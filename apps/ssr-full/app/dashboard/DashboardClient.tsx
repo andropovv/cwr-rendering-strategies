@@ -1,7 +1,7 @@
 "use client";
 
-import { DashboardInteractive, type DashboardData } from "@cwr/shared";
+import { DashboardInteractive, type DashboardDataset } from "@cwr/shared/client";
 
-export function DashboardClient({ data }: { data: DashboardData }) {
-  return <DashboardInteractive data={data} />;
+export function DashboardClient({ dataset }: { dataset: DashboardDataset }) {
+  return <DashboardInteractive dataset={dataset} />;
 }

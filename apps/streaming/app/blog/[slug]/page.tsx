@@ -1,5 +1,4 @@
-import { getBlogPostBySlug, getBlogPosts } from "@cwr/shared";
-import { BlogPostView } from "@cwr/shared";
+import { getBlogPostBySlug, getBlogPosts, BlogPostView } from "@cwr/shared/server";
 import { notFound } from "next/navigation";
 
 export async function generateStaticParams() {

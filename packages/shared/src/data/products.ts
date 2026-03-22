@@ -10,46 +10,49 @@ export interface Product {
   reviewCount: number;
 }
 
-export const products: Product[] = [
-  {
-    id: "1",
-    name: "Беспроводные наушники Pro",
-    description: "Шумоподавление, до 30 часов работы, поддержка высокого разрешения аудио.",
-    price: 12990,
-    currency: "₽",
-    image: "/placeholder-headphones.svg",
-    category: "Аудио",
-    rating: 4.8,
-    reviewCount: 1247,
-  },
-  {
-    id: "2",
-    name: "Умные часы Sport",
-    description: "Мониторинг пульса, GPS, водозащита 5 ATM, до 7 дней без подзарядки.",
-    price: 18990,
-    currency: "₽",
-    image: "/placeholder-watch.svg",
-    category: "Носимые устройства",
-    rating: 4.6,
-    reviewCount: 892,
-  },
-  {
-    id: "3",
-    name: "Портативная колонка Mini",
-    description: "Компактный размер, 12 часов воспроизведения, защита от брызг.",
-    price: 4990,
-    currency: "₽",
-    image: "/placeholder-speaker.svg",
-    category: "Аудио",
-    rating: 4.5,
-    reviewCount: 534,
-  },
+const productNames = [
+  "Беспроводные наушники Pro",
+  "Умные часы Sport",
+  "Портативная колонка Mini",
+  "Игровая клавиатура Air",
+  "Смарт-камера Home",
+  "Монитор Studio 27",
 ];
 
-export function getProducts(): Product[] {
-  return products;
+const categories = [
+  "Аудио",
+  "Носимые устройства",
+  "Периферия",
+  "Дом",
+  "Мониторы",
+];
+
+export function generateProducts(count = 1200): Product[] {
+  return Array.from({ length: count }, (_, index) => {
+    const name = productNames[index % productNames.length];
+    const category = categories[index % categories.length];
+    const price = 3990 + ((index * 137) % 24000);
+    return {
+      id: String(index + 1),
+      name: `${name} ${index + 1}`,
+      description:
+        "Демо-товар для нагрузочного сравнения гидратации. Один и тот же UI, но разные стратегии рендеринга.",
+      price,
+      currency: "₽",
+      image: `/placeholder-${(index % 5) + 1}.svg`,
+      category,
+      rating: Number((4.1 + ((index % 8) * 0.1)).toFixed(1)),
+      reviewCount: 120 + ((index * 43) % 5000),
+    };
+  });
 }
 
-export function getProductById(id: string): Product | undefined {
-  return products.find((p) => p.id === id);
+export const products: Product[] = generateProducts(24);
+
+export function getProducts(count = 24): Product[] {
+  return generateProducts(count);
+}
+
+export function getProductById(id: string, count = 1200): Product | undefined {
+  return generateProducts(count).find((product) => product.id === id);
 }

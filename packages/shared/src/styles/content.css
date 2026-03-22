@@ -149,6 +149,7 @@
   align-items: flex-end;
   gap: 0.5rem;
   height: 160px;
+  flex-wrap: wrap;
 }
 
 .cwr-chart-bar-item {

@@ -1,43 +1,30 @@
 "use client";
 
-import { useRouter, useSearchParams } from "next/navigation";
-import { useTransition } from "react";
-import type { DashboardMetric } from "@cwr/shared";
+import { useState, useTransition } from "react";
+import type { DashboardMetric } from "@cwr/shared/client";
+import { updateDashboardFiltersAction } from "./actions";
 
-function pick<T extends string>(value: string | null, allowed: readonly T[], fallback: T): T {
-  if (!value) return fallback;
-  return (allowed as readonly string[]).includes(value) ? (value as T) : fallback;
-}
+const pillStyle = (active: boolean) =>
+  ({
+    padding: "0.25rem 0.75rem",
+    borderRadius: "999px",
+    border: "1px solid #e2e8f0",
+    background: active ? "#0f172a" : "white",
+    color: active ? "white" : "#0f172a",
+    cursor: "pointer",
+    fontSize: "0.8125rem",
+  }) as const;
 
-export function MetricIsland() {
-  const router = useRouter();
-  const sp = useSearchParams();
+export function MetricIsland({ initialMetric }: { initialMetric: DashboardMetric }) {
   const [isPending, startTransition] = useTransition();
-
-  const metric = pick<DashboardMetric>(
-    sp.get("metric"),
-    ["users", "revenue", "conversion"] as const,
-    "users",
-  );
+  const [metric, setMetric] = useState(initialMetric);
 
   const update = (next: DashboardMetric) => {
-    const params = new URLSearchParams(sp.toString());
-    params.set("metric", next);
-    startTransition(() => {
-      router.replace(`?${params.toString()}`);
+    startTransition(async () => {
+      setMetric(next);
+      await updateDashboardFiltersAction({ metric: next });
     });
   };
-
-  const pillStyle = (active: boolean) =>
-    ({
-      padding: "0.25rem 0.75rem",
-      borderRadius: "999px",
-      border: "1px solid #e2e8f0",
-      background: active ? "#0f172a" : "white",
-      color: active ? "white" : "#0f172a",
-      cursor: "pointer",
-      fontSize: "0.8125rem",
-    }) as const;
 
   return (
     <>

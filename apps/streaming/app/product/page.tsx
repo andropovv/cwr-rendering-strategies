@@ -1,19 +1,23 @@
-import Link from "next/link";
-import { getProducts } from "@cwr/shared";
-import { ProductCard } from "@cwr/shared";
+import { Suspense } from "react";
+import { fetchProductsFromApi } from "@cwr/shared/server";
+import { ProductListClient } from "./ProductListClient";
+
+export const dynamic = "force-dynamic";
+
+async function ProductCatalogBlock() {
+  const { items, total } = await fetchProductsFromApi({
+    baseUrl: process.env.MOCK_API_BASE_URL,
+    count: 1200,
+    limit: 120,
+    delayMs: 140,
+  });
+  return <ProductListClient products={items} total={total} />;
+}
 
 export default function ProductListPage() {
-  const products = getProducts();
   return (
-    <div>
-      <h1>Товары</h1>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: "1rem" }}>
-        {products.map((product) => (
-          <Link key={product.id} href={`/product/${product.id}`}>
-            <ProductCard product={product} />
-          </Link>
-        ))}
-      </div>
-    </div>
+    <Suspense fallback={<p>Загрузка каталога…</p>}>
+      <ProductCatalogBlock />
+    </Suspense>
   );
 }

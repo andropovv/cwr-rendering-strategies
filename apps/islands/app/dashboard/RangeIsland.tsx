@@ -1,39 +1,30 @@
 "use client";
 
-import type { DashboardRange } from "@cwr/shared";
-import { useRouter, useSearchParams } from "next/navigation";
-import { useTransition } from "react";
+import type { DashboardRange } from "@cwr/shared/client";
+import { useState, useTransition } from "react";
+import { updateDashboardFiltersAction } from "./actions";
 
-function pick<T extends string>(value: string | null, allowed: readonly T[], fallback: T): T {
-  if (!value) return fallback;
-  return (allowed as readonly string[]).includes(value) ? (value as T) : fallback;
-}
+const pillStyle = (active: boolean) =>
+  ({
+    padding: "0.25rem 0.75rem",
+    borderRadius: "999px",
+    border: "1px solid #e2e8f0",
+    background: active ? "#0f172a" : "white",
+    color: active ? "white" : "#0f172a",
+    cursor: "pointer",
+    fontSize: "0.8125rem",
+  }) as const;
 
-export function RangeIsland() {
-  const router = useRouter();
-  const sp = useSearchParams();
+export function RangeIsland({ initialRange }: { initialRange: DashboardRange }) {
   const [isPending, startTransition] = useTransition();
-
-  const range = pick<DashboardRange>(sp.get("range"), ["7d", "30d", "90d"] as const, "7d");
+  const [range, setRange] = useState(initialRange);
 
   const update = (next: DashboardRange) => {
-    const params = new URLSearchParams(sp.toString());
-    params.set("range", next);
-    startTransition(() => {
-      router.replace(`?${params.toString()}`);
+    startTransition(async () => {
+      setRange(next);
+      await updateDashboardFiltersAction({ range: next });
     });
   };
-
-  const pillStyle = (active: boolean) =>
-    ({
-      padding: "0.25rem 0.75rem",
-      borderRadius: "999px",
-      border: "1px solid #e2e8f0",
-      background: active ? "#0f172a" : "white",
-      color: active ? "white" : "#0f172a",
-      cursor: "pointer",
-      fontSize: "0.8125rem",
-    }) as const;
 
   return (
     <>

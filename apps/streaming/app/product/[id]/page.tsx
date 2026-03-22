@@ -1,10 +1,8 @@
-import { getProductById, getProducts } from "@cwr/shared";
-import { ProductControls, ProductPageContent } from "@cwr/shared";
+import { fetchProductFromApi, ProductPageContent } from "@cwr/shared/server";
+import { ProductControls } from "@cwr/shared/client";
 import { notFound } from "next/navigation";
 
-export async function generateStaticParams() {
-  return getProducts().map((p) => ({ id: p.id }));
-}
+export const dynamic = "force-dynamic";
 
 export default async function ProductPage({
   params,
@@ -12,13 +10,20 @@ export default async function ProductPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const product = getProductById(id);
-  if (!product) notFound();
-  return (
-    <div>
-      <h1>Товар</h1>
-      <ProductPageContent product={product} />
-      <ProductControls product={product} />
-    </div>
-  );
+  try {
+    const product = await fetchProductFromApi(id, {
+      baseUrl: process.env.MOCK_API_BASE_URL,
+      count: 1200,
+      delayMs: 120,
+    });
+    return (
+      <div>
+        <h1>Товар</h1>
+        <ProductPageContent product={product} />
+        <ProductControls product={product} />
+      </div>
+    );
+  } catch {
+    notFound();
+  }
 }

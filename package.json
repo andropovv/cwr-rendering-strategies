@@ -7,12 +7,26 @@
   ],
   "scripts": {
     "build": "npm run build --workspaces --if-present",
+    "analyze:islands": "ANALYZE=true npm run build -w apps-islands",
+    "analyze:rsc-selective": "ANALYZE=true npm run build -w apps-rsc-selective",
+    "analyze:ssr-full": "ANALYZE=true npm run build -w apps-ssr-full",
+    "analyze:streaming": "ANALYZE=true npm run build -w apps-streaming",
+    "build:mock-api": "npm run build -w apps-mock-api",
+    "dev:mock-api": "npm run dev -w apps-mock-api",
     "dev:ssr-full": "npm run dev -w apps/ssr-full",
     "dev:streaming": "npm run dev -w apps/streaming",
     "dev:rsc-selective": "npm run dev -w apps/rsc-selective",
-    "dev:islands": "npm run dev -w apps/islands"
+    "dev:islands": "npm run dev -w apps/islands",
+    "measure:islands": "node ./scripts/measure.mjs islands",
+    "measure:rsc-selective": "node ./scripts/measure.mjs rsc-selective",
+    "measure:ssr-full": "node ./scripts/measure.mjs ssr-full",
+    "measure:streaming": "node ./scripts/measure.mjs streaming",
+    "start:mock-api": "npm run start -w apps-mock-api"
   },
   "devDependencies": {
-    "typescript": "^5.3.0"
+    "@next/bundle-analyzer": "^16.2.1",
+    "lighthouse": "^13.0.3",
+    "typescript": "^5.9.3",
+    "wait-on": "^9.0.4"
   }
 }

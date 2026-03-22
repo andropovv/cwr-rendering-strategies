@@ -1,6 +1,5 @@
 import { Suspense } from "react";
-import { getBlogPosts } from "@cwr/shared";
-import { BlogCard } from "@cwr/shared";
+import { getBlogPosts, BlogCard } from "@cwr/shared/server";
 
 export default function BlogPage() {
   const posts = getBlogPosts();
