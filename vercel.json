@@ -1,0 +1,14 @@
+{
+  "builds": [
+    {
+      "src": "apps/mock-api/dist/server.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/apps/mock-api/dist/server.js"
+    }
+  ]
+}
