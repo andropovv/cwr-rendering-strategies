@@ -24,7 +24,7 @@
     "start:mock-api": "npm run start -w apps-mock-api"
   },
   "engines": {
-    "node": "20.x"
+    "node": "24.x"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^16.2.1",
