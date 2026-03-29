@@ -1,5 +1,10 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "functions": {
+    "apps/mock-api/dist/server.js": {
+      "runtime": "@vercel/node"
+    }
+  },
   "routes": [
     {
       "src": "/(.*)",
