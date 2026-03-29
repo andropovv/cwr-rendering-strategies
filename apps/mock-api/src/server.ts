@@ -19,6 +19,10 @@ app.get("/health", (_req, res) => {
 app.use("/api/dashboard", dashboardRoutes);
 app.use("/api/products", productRoutes);
 
-app.listen(port, () => {
-  console.log(`mock-api listening on http://localhost:${port}`);
-});
+if (process.env.NODE_ENV !== "production") {
+  app.listen(port, () => {
+    console.log(`mock-api listening on http://localhost:${port}`);
+  });
+}
+
+export default app;

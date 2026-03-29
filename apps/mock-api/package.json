@@ -2,6 +2,7 @@
   "name": "apps-mock-api",
   "version": "1.0.0",
   "private": true,
+  "main": "./dist/server.js",
   "scripts": {
     "dev": "node --import tsx src/server.ts",
     "build": "tsc -p tsconfig.json",
