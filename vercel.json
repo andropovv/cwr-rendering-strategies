@@ -2,7 +2,7 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "functions": {
     "apps/mock-api/dist/server.js": {
-      "runtime": "@vercel/node"
+      "runtime": "@vercel/node@20"
     }
   },
   "routes": [

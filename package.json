@@ -23,6 +23,9 @@
     "measure:streaming": "node ./scripts/measure.mjs streaming",
     "start:mock-api": "npm run start -w apps-mock-api"
   },
+  "engines": {
+    "node": "20.x"
+  },
   "devDependencies": {
     "@next/bundle-analyzer": "^16.2.1",
     "lighthouse": "^13.0.3",
