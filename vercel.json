@@ -1,14 +1,9 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "functions": {
-    "apps/mock-api/dist/server.js": {
-      "runtime": "nodejs24.x"
-    }
-  },
-  "routes": [
+  "rewrites": [
     {
-      "src": "/(.*)",
-      "dest": "/apps/mock-api/dist/server.js"
+      "source": "/(.*)",
+      "destination": "/apps/mock-api/dist/server.js"
     }
   ]
 }
