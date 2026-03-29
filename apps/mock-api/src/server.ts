@@ -9,6 +9,20 @@ const port = Number(process.env.PORT ?? 4010);
 app.use(cors());
 app.use(express.json());
 
+app.get("/", (_req, res) => {
+  res.json({
+    ok: true,
+    service: "mock-api",
+    endpoints: [
+      "/health",
+      "/api/dashboard/raw",
+      "/api/dashboard/view",
+      "/api/products",
+      "/api/products/:id",
+    ],
+  });
+});
+
 app.get("/health", (_req, res) => {
   res.json({
     ok: true,
