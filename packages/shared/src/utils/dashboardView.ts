@@ -1,5 +1,3 @@
-import { format } from "date-fns";
-import { ru } from "date-fns/locale";
 import type {
     ChartDataPoint,
     DashboardActivityItem,
@@ -62,7 +60,10 @@ function bucketPoints(
 
     const first = bucket[0];
     result.push({
-      label: format(new Date(first.timestamp), "d MMM", { locale: ru }),
+      label: new Date(first.timestamp).toLocaleDateString("ru-RU", {
+        month: "short",
+        day: "numeric",
+      }),
       value:
         metric === "conversion"
           ? Number((aggregate / bucket.length).toFixed(1))

@@ -5,9 +5,15 @@
   "types": "./dist/index.d.ts",
   "typesVersions": {
     "*": {
-      "server": ["dist/server.d.ts"],
-      "client": ["dist/client.d.ts"],
-      "core": ["dist/core.d.ts"]
+      "server": [
+        "dist/server.d.ts"
+      ],
+      "client": [
+        "dist/client.d.ts"
+      ],
+      "core": [
+        "dist/core.d.ts"
+      ]
     }
   },
   "exports": {
@@ -53,7 +59,6 @@
   "dependencies": {
     "d3-array": "^3.2.4",
     "d3-scale": "^4.0.2",
-    "d3-shape": "^3.2.0",
-    "date-fns": "^4.1.0"
+    "d3-shape": "^3.2.0"
   }
 }

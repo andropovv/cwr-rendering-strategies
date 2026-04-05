@@ -1,6 +1,3 @@
-import { formatDistanceStrict } from "date-fns";
-import { ru } from "date-fns/locale";
-
 export interface ChartDataPoint {
   label: string;
   value: number;
@@ -141,10 +138,16 @@ export function generateLargeDashboardDataset(
 }
 
 export function formatRelativeActivityTime(timestamp: number, now: number): string {
-  return formatDistanceStrict(new Date(timestamp), new Date(now), {
-    addSuffix: true,
-    locale: ru,
-  });
+  const diffMinutes = Math.max(1, Math.round((now - timestamp) / (60 * 1000)));
+  if (diffMinutes < 60) {
+    return `${diffMinutes} мин назад`;
+  }
+  const diffHours = Math.round(diffMinutes / 60);
+  if (diffHours < 24) {
+    return `${diffHours} ч назад`;
+  }
+  const diffDays = Math.round(diffHours / 24);
+  return `${diffDays} дн назад`;
 }
 
 export function getDashboardData(): DashboardData {
