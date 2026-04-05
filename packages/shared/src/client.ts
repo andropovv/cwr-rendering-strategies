@@ -4,13 +4,14 @@ export type { DashboardInteractiveProps } from "./client/DashboardInteractive";
 export {
   ClientActivityList,
   ClientChartBar,
-  ClientProductCard,
   ClientProductPageContent,
   ClientStatsCard,
 } from "./client/Presentational";
+export { ProductExperienceDetails } from "./components/ProductExperienceDetails";
 
 export { ProductControls } from "./client/ProductControls";
 export type { ProductControlsProps } from "./client/ProductControls";
+export { ProductPurchasePanel } from "./client/ProductPurchasePanel";
 
 export type {
   DashboardDataset,
@@ -19,7 +20,14 @@ export type {
   ChartDataPoint,
   DashboardActivityItem,
 } from "./data/dashboard";
-export type { Product } from "./data/products";
+export type {
+  DeliveryOption,
+  Product,
+  ProductExperienceData,
+  ProductReview,
+  ProductSpec,
+  ProductVariantOption,
+} from "./data/products";
 
 export type {
   DashboardRange,
@@ -27,3 +35,12 @@ export type {
   DashboardSortOrder,
   DashboardViewOptions,
 } from "./utils/dashboardView";
+export {
+  buildProductExperienceData,
+  calculateProductPurchaseSummary,
+  getInitialProductPurchaseState,
+} from "./utils/productExperience";
+export type {
+  ProductPurchaseState,
+  ProductPurchaseSummary,
+} from "./utils/productExperience";

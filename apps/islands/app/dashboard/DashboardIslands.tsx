@@ -1,11 +1,11 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import type {
-  DashboardMetric,
-  DashboardRange,
-  DashboardSortOrder,
+    DashboardMetric,
+    DashboardRange,
+    DashboardSortOrder,
 } from "@cwr/shared/client";
+import dynamic from "next/dynamic";
 
 const RangeIsland = dynamic(
   () => import("./RangeIsland").then((module) => module.RangeIsland),

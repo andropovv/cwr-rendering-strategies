@@ -10,6 +10,45 @@ export interface Product {
   reviewCount: number;
 }
 
+export interface ProductVariantOption {
+  id: string;
+  label: string;
+  accent: string;
+  priceDelta: number;
+  inventory: number;
+}
+
+export interface ProductSpec {
+  label: string;
+  value: string;
+}
+
+export interface ProductReview {
+  id: string;
+  author: string;
+  rating: number;
+  title: string;
+  body: string;
+  createdAt: number;
+  verified: boolean;
+  helpfulCount: number;
+}
+
+export interface DeliveryOption {
+  id: string;
+  label: string;
+  etaDays: number;
+  price: number;
+  note: string;
+}
+
+export interface ProductExperienceData {
+  variants: ProductVariantOption[];
+  specs: ProductSpec[];
+  reviews: ProductReview[];
+  deliveryOptions: DeliveryOption[];
+}
+
 const productNames = [
   "Беспроводные наушники Pro",
   "Умные часы Sport",

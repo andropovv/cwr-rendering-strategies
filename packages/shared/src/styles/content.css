@@ -107,6 +107,274 @@
   padding: 0 1.5rem 1.5rem;
 }
 
+.cwr-product-page-kicker {
+  margin: 1rem 1rem 0;
+  color: #64748b;
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.cwr-product-page-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1rem 1rem 0;
+  color: #475569;
+  font-size: 0.875rem;
+}
+
+.cwr-product-variant-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.cwr-product-sections {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.cwr-product-section-card {
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 1rem 1.25rem;
+  background: #fff;
+}
+
+.cwr-product-section-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.cwr-product-section-header h2 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.cwr-product-section-header span {
+  color: #64748b;
+  font-size: 0.875rem;
+}
+
+.cwr-product-spec-grid {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.cwr-product-spec-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.cwr-product-spec-row:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.cwr-product-spec-row span {
+  color: #64748b;
+}
+
+.cwr-product-review-summary {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.cwr-product-review-score {
+  display: grid;
+  gap: 0.25rem;
+  align-content: start;
+}
+
+.cwr-product-review-score strong {
+  font-size: 2rem;
+}
+
+.cwr-product-review-score span {
+  color: #64748b;
+}
+
+.cwr-product-review-bars {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.cwr-product-review-bar-row {
+  display: grid;
+  grid-template-columns: 38px 1fr 32px;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.cwr-product-review-bar-track {
+  height: 10px;
+  background: #e2e8f0;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.cwr-product-review-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #2563eb 0%, #38bdf8 100%);
+  border-radius: 999px;
+}
+
+.cwr-product-review-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.cwr-product-review-card {
+  padding: 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #f8fafc;
+}
+
+.cwr-product-review-card h3 {
+  margin: 0.4rem 0;
+  font-size: 1rem;
+}
+
+.cwr-product-review-card p {
+  margin: 0;
+  color: #334155;
+  line-height: 1.55;
+}
+
+.cwr-product-review-card-head,
+.cwr-product-review-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  color: #64748b;
+  font-size: 0.8125rem;
+}
+
+.cwr-product-review-rating {
+  margin: 0.35rem 0 0.5rem;
+  color: #f59e0b;
+  letter-spacing: 0.12em;
+}
+
+.cwr-product-config-group {
+  display: grid;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.cwr-product-config-label {
+  color: #475569;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.cwr-product-chip-row {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.cwr-product-chip {
+  min-width: 150px;
+  display: grid;
+  gap: 0.2rem;
+  text-align: left;
+  padding: 0.85rem 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.cwr-product-chip-active {
+  border-color: #0f172a;
+  box-shadow: inset 0 0 0 1px currentColor;
+}
+
+.cwr-product-purchase-row {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.cwr-product-qty {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #cbd5e1;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.cwr-product-qty button {
+  padding: 0.65rem 1rem;
+  border: none;
+  background: #fff;
+  cursor: pointer;
+}
+
+.cwr-product-qty span {
+  min-width: 3rem;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.cwr-product-buy-button {
+  padding: 0.85rem 1.5rem;
+  border: none;
+  border-radius: 12px;
+  background: #16a34a;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.cwr-product-buy-button:disabled {
+  background: #94a3b8;
+  cursor: default;
+}
+
+.cwr-product-purchase-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.cwr-product-purchase-summary div {
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.85rem 1rem;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+}
+
+.cwr-product-purchase-summary span {
+  color: #64748b;
+  font-size: 0.8125rem;
+}
+
+.cwr-product-pending {
+  margin-top: 0.75rem;
+  font-size: 0.8125rem;
+  color: #64748b;
+}
+
 .cwr-stats-card {
   background: #f8fafc;
   border: 1px solid #e2e8f0;
@@ -137,45 +405,84 @@
   border: 1px solid #e2e8f0;
   border-radius: 8px;
   padding: 1.25rem;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+}
+
+.cwr-chart-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+  margin-bottom: 1rem;
 }
 
 .cwr-chart-title {
   font-size: 1rem;
-  margin: 0 0 1rem;
+  margin: 0;
 }
 
-.cwr-chart-bars {
-  display: flex;
-  align-items: flex-end;
-  gap: 0.5rem;
-  height: 160px;
-  flex-wrap: wrap;
+.cwr-chart-subtitle {
+  margin: 0.35rem 0 0;
+  color: #64748b;
+  font-size: 0.875rem;
 }
 
-.cwr-chart-bar-item {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.25rem;
+.cwr-chart-highlight {
+  min-width: 144px;
+  padding: 0.75rem 0.875rem;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 12px;
 }
 
-.cwr-chart-bar-fill {
-  width: 100%;
-  max-width: 32px;
-  background: #3b82f6;
-  border-radius: 4px 4px 0 0;
-  min-height: 4px;
-}
-
-.cwr-chart-bar-label {
+.cwr-chart-highlight-label {
+  display: block;
   font-size: 0.75rem;
   color: #64748b;
+  margin-bottom: 0.25rem;
 }
 
-.cwr-chart-bar-value {
-  font-size: 0.8125rem;
-  font-weight: 600;
+.cwr-chart-highlight-value {
+  font-size: 1.125rem;
+  color: #1d4ed8;
+}
+
+.cwr-chart-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.cwr-chart-grid-line {
+  stroke: #dbeafe;
+  stroke-width: 1;
+  stroke-dasharray: 4 6;
+}
+
+.cwr-chart-axis-line {
+  stroke: #cbd5e1;
+  stroke-width: 1;
+}
+
+.cwr-chart-axis-label {
+  fill: #64748b;
+  font-size: 12px;
+}
+
+.cwr-chart-area {
+  fill: url(#cwr-dashboard-area);
+}
+
+.cwr-chart-line {
+  fill: none;
+  stroke: #2563eb;
+  stroke-width: 3;
+}
+
+.cwr-chart-point {
+  fill: #ffffff;
+  stroke: #2563eb;
+  stroke-width: 2.5;
 }
 
 .cwr-activity-list {
@@ -226,6 +533,10 @@
 
 @media (max-width: 768px) {
   .cwr-dashboard-content {
+    grid-template-columns: 1fr;
+  }
+
+  .cwr-product-review-summary {
     grid-template-columns: 1fr;
   }
 }

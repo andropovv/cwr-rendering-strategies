@@ -6,6 +6,7 @@ export { ChartBar } from "./components/ChartBar";
 export { Layout } from "./components/Layout";
 export { ProductCard } from "./components/ProductCard";
 export { ProductPageContent } from "./components/ProductPageContent";
+export { ProductExperienceDetails } from "./components/ProductExperienceDetails";
 export { StatsCard } from "./components/StatsCard";
 
 export {
@@ -16,7 +17,9 @@ export type { BlogPost } from "./data/blog";
 export {
     generateProducts, getProductById, getProducts, products
 } from "./data/products";
-export type { Product } from "./data/products";
+export type {
+    DeliveryOption, Product, ProductExperienceData, ProductReview, ProductSpec, ProductVariantOption
+} from "./data/products";
 
 export {
     formatRelativeActivityTime, generateLargeDashboardDataset, getDashboardData
@@ -37,4 +40,10 @@ export type {
 export {
     applyDashboardView, type DashboardMetric, type DashboardRange, type DashboardSortOrder, type DashboardViewOptions
 } from "./utils/dashboardView";
+export {
+    buildProductExperienceData, calculateProductPurchaseSummary, formatProductReviewDate, getInitialProductPurchaseState
+} from "./utils/productExperience";
+export type {
+    ProductPurchaseState, ProductPurchaseSummary
+} from "./utils/productExperience";
 

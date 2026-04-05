@@ -1,11 +1,11 @@
-import { Suspense } from "react";
-import {
-  ActivityList,
-  ChartBar,
-  applyDashboardView,
-  fetchRawDashboardDataset,
-} from "@cwr/shared/server";
 import { DashboardInteractive as ClientDashboardInteractive } from "@cwr/shared/client";
+import {
+    ActivityList,
+    ChartBar,
+    applyDashboardView,
+    fetchRawDashboardDataset,
+} from "@cwr/shared/server";
+import { Suspense } from "react";
 
 export const dynamic = "force-dynamic";
 

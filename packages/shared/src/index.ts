@@ -36,7 +36,6 @@ export type { DashboardInteractiveProps } from "./client/DashboardInteractive";
 export {
     ClientActivityList,
     ClientChartBar,
-    ClientProductCard,
     ClientProductPageContent,
     ClientStatsCard
 } from "./client/Presentational";

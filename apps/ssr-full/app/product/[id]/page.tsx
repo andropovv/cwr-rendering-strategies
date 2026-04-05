@@ -14,7 +14,7 @@ export default async function ProductPage({
     const product = await fetchProductFromApi(id, {
       baseUrl: process.env.MOCK_API_BASE_URL,
       count: 1200,
-      delayMs: 120,
+      delayMs: 110,
     });
     return <ProductPageClient product={product} />;
   } catch {

@@ -2,6 +2,8 @@
 
 import type { ChartDataPoint, DashboardActivityItem } from "../data/dashboard";
 import type { Product } from "../data/products";
+import type { ProductPurchaseSummary } from "../utils/productExperience";
+import { DashboardChartSvg } from "../components/DashboardChartSvg";
 
 export function ClientStatsCard({
   title,
@@ -22,24 +24,7 @@ export function ClientStatsCard({
 }
 
 export function ClientChartBar({ data }: { data: ChartDataPoint[] }) {
-  const max = Math.max(...data.map((item) => item.value), 1);
-  return (
-    <div className="cwr-chart-bar">
-      <h3 className="cwr-chart-title">Активность по дням</h3>
-      <div className="cwr-chart-bars">
-        {data.map((item, index) => (
-          <div key={index} className="cwr-chart-bar-item">
-            <div
-              className="cwr-chart-bar-fill"
-              style={{ height: `${(item.value / max) * 100}%` }}
-            />
-            <span className="cwr-chart-bar-label">{item.label}</span>
-            <span className="cwr-chart-bar-value">{item.value}</span>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
+  return <DashboardChartSvg data={data} />;
 }
 
 export function ClientActivityList({ items }: { items: DashboardActivityItem[] }) {
@@ -58,35 +43,41 @@ export function ClientActivityList({ items }: { items: DashboardActivityItem[] }
   );
 }
 
-export function ClientProductCard({ product }: { product: Product }) {
-  return (
-    <div className="cwr-product-card">
-      <div className="cwr-product-card-image">{product.image}</div>
-      <h3 className="cwr-product-card-name">{product.name}</h3>
-      <p className="cwr-product-card-desc">{product.description}</p>
-      <div className="cwr-product-card-price">
-        {product.price.toLocaleString("ru-RU")} {product.currency}
-      </div>
-      <div className="cwr-product-card-rating">
-        ★ {product.rating} ({product.reviewCount} отзывов)
-      </div>
-    </div>
-  );
-}
+export function ClientProductPageContent({
+  product,
+  summary,
+}: {
+  product: Product;
+  summary?: ProductPurchaseSummary;
+}) {
+  const displayPrice = summary?.unitPrice ?? product.price;
 
-export function ClientProductPageContent({ product }: { product: Product }) {
   return (
     <div className="cwr-product-page">
       <div className="cwr-product-page-image">{product.image}</div>
       <div className="cwr-product-page-info">
+        <div className="cwr-product-page-kicker">{product.category}</div>
         <h1 className="cwr-product-page-title">{product.name}</h1>
         <p className="cwr-product-page-desc">{product.description}</p>
         <div className="cwr-product-page-price">
-          {product.price.toLocaleString("ru-RU")} {product.currency}
+          {displayPrice.toLocaleString("ru-RU")} {product.currency}
         </div>
         <div className="cwr-product-page-rating">
           ★ {product.rating} • {product.reviewCount} отзывов
         </div>
+        {summary && (
+          <div className="cwr-product-page-meta">
+            <span
+              className="cwr-product-variant-badge"
+              style={{ background: `${summary.selectedVariant.accent}14`, color: summary.selectedVariant.accent }}
+            >
+              {summary.selectedVariant.label}
+            </span>
+            <span>{summary.inventoryLabel}</span>
+            <span>{summary.deliveryLabel}</span>
+            <span>от {summary.monthlyInstallment.toLocaleString("ru-RU")} ₽/мес</span>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useTransition } from "react";
 import type { DashboardMetric } from "@cwr/shared/client";
+import { useState, useTransition } from "react";
 import { updateDashboardFiltersAction } from "./actions";
 
 const pillStyle = (active: boolean) =>
