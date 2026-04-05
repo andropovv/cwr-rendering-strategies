@@ -5,7 +5,7 @@ import {
   type DashboardMetric,
   type DashboardRange,
   type DashboardSortOrder,
-} from "@cwr/shared/server";
+} from "@cwr/shared/core";
 
 const router = Router();
 

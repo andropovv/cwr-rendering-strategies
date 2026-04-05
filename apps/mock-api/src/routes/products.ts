@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { generateProducts } from "@cwr/shared/server";
+import { generateProducts } from "@cwr/shared/core";
 
 const router = Router();
 
